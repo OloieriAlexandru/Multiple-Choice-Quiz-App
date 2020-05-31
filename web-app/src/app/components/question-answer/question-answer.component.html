@@ -1,0 +1,16 @@
+<div class="question-answer-wrapper" [class.question-selected]="checked" *ngIf="checked!=null"
+  (click)="onValueChanged(checked)">
+  <span *ngIf="checked&&final" class="obtained-score">
+    <span *ngIf="correct==1">+{{answerScore}}</span>
+    <span *ngIf="correct==0">-{{answerScore}}</span>
+  </span>
+  <span class="icon" *ngIf="correct!=null&&final">
+    <mat-icon svgIcon="correct_ans" class="success" *ngIf="correct==1"></mat-icon>
+    <mat-icon svgIcon="wrong_ans" class="wrong" *ngIf="correct==0"></mat-icon>
+  </span>
+  <mat-checkbox [checked]="checked" [disabled]="final">
+  </mat-checkbox>
+  <div class="answer-text">
+    {{answer.text_raspuns}}
+  </div>
+</div>

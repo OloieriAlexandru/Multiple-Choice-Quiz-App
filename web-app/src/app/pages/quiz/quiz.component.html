@@ -1,0 +1,29 @@
+<div class="quiz-page-wrapper" *ngIf="response; else spinner">
+  <div class="empty"></div>
+
+  <div class="question-wrapper" *ngIf="questionNumber<100; else finalScore">
+    <app-question [question]="currentQuestion" (answerChanged)="onAnswerChanged($event)"></app-question>
+  </div>
+  <ng-template #finalScore>
+    <div class="final-score-wrapper">
+      <div class="final-score">
+        Final score: {{score}}
+      </div>
+      <div class="questions-score-wrapper">
+        <div class="question-score" *ngFor="let score of questionsScores; let i=index">
+          Question <span *ngIf="i<9">0</span>{{i+1}}: <span class="score"> {{score}} </span>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <div class="navigation-bar-wrapper">
+    <app-navigation-bar [questionNumber]="questionNumber" [quizFinished]="quizFinished"
+      (buttonClicked)="onButtonClicked($event)"></app-navigation-bar>
+  </div>
+</div>
+<ng-template #spinner>
+  <div class="spinner-wrapper">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

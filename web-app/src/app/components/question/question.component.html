@@ -1,0 +1,15 @@
+<div class="question-wrapper">
+  <div class="text">
+    {{question.text}}
+  </div>
+  <div class="sub-text" *ngIf="question.answerScore!=null">
+    (Your score: {{question.userScore}} / 10)
+  </div>
+  <div class="answers-wrapper">
+    <app-question-answer *ngFor="let answer of question.answers" [answer]="answer" [answerScore]="question.answerScore"
+      (answerChanged)="onAnswerChanged($event)">
+    </app-question-answer>
+    <div class="info-block" *ngIf="question.answerScore!=null">Correct answer: +{{question.answerScore}}</div>
+    <div class="info-block" *ngIf="question.answerScore!=null">Wrong answer: -{{question.answerScore}}</div>
+  </div>
+</div>

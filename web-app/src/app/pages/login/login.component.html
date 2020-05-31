@@ -1,0 +1,14 @@
+<div class="login-page-wrapper">
+  <div class="login-widget">
+    <div class="title">
+      Login
+    </div>
+    <form>
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" [(ngModel)]="email">
+      </div>
+      <button mat-raised-button color="primary" (click)="login()">Login</button>
+    </form>
+  </div>
+</div>

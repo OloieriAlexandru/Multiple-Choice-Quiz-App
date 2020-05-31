@@ -1,0 +1,28 @@
+<div class="navigation-bar-wrapper" *ngIf="questionNumber!=null">
+  <div class="button-question">
+    <div class="button-question">
+      <button mat-raised-button color="primary" class="previous-question-button" *ngIf="quizFinished&&questionNumber>0; else previousButtonDisabled"
+        (click)="onButtonClicked(1)">
+        <mat-icon svgIcon="left_arrow"></mat-icon> Previous Question
+      </button>
+      <ng-template #previousButtonDisabled>
+        <button mat-raised-button disabled>
+          <mat-icon svgIcon="left_arrow"></mat-icon> Previous Question
+        </button>
+      </ng-template>
+    </div>
+  </div>
+  <div class="progress-bar">
+    <mat-progress-bar mode="determinate" [value]="questionNumber"></mat-progress-bar>
+  </div>
+  <div class="button-question">
+    <button mat-raised-button color="primary"
+      *ngIf="questionNumber==90 || questionNumber<90; else resultsButtonDisabled" (click)="onButtonClicked(2)">
+      <span *ngIf="questionNumber<90" class="next-question-button">Next Question <mat-icon svgIcon="right_arrow"></mat-icon></span>
+      <span *ngIf="questionNumber==90">View results</span>
+    </button>
+    <ng-template #resultsButtonDisabled>
+      <button mat-raised-button disabled>View results</button>
+    </ng-template>
+  </div>
+</div>
